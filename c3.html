@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css" />
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+    <style>
+        .c3 .c3-axis-x path,
+        .c3 .c3-axis-x line {
+            stroke: #ddd;
+        }
+        
+        .c3 .c3-axis-y path,
+        .c3 .c3-axis-y lines {
+            stroke: #ddd;
+        }
+        
+        .c3-ygrid-line.gridGray line {
+            stroke: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chart"></div>
+    <script>
+        var chart = c3.generate({
+            data: {
+                x: 'x',
+                url: 'data_01.csv'
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    tick: {
+                        count: 7
+                    }
+                },
+                y: {
+                    tick: {
+                        format: function(d) {
+                            return d + "%";
+                        }
+                    },
+                }
+            },
+            point: {
+                show: false
+            },
+            color: {
+                pattern: ['#ff5f00', '#ffe082', '#80deeb', '#c4e0a6', '#bdaba3']
+            },
+            grid: {
+                y: {
+                    lines: [{
+                        value: 0,
+                        class: 'gridGray'
+                    }, {
+                        value: 1,
+                        class: 'gridGray'
+                    }, {
+                        value: 2,
+                        class: 'gridGray'
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
